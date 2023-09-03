@@ -1,9 +1,11 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const indexRouter = require("./routes");
+const PORT=+process.env.PORT || 3000;
 
-mongoose.connect("mongodb://127.0.0.1:27017/todoapp").then(() => {
+mongoose.connect(process.env.DB_URL).then(() => {
     console.log("Database connected.");
 });
 
