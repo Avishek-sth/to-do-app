@@ -9,7 +9,7 @@ const todoSchema = new Schema({
     required: true,
     default: "pending",
   },
-  created_at: {type: Date, default: Date.now },
+  ...commonSchema,
 });
 
 module.exports = mongoose.model("Todo", todoSchema);
