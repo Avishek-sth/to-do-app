@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const commonSchema = require("../common/commonSchema");
 
 const subTaskSchema = new Schema({
   title: { type: String, required: true },
@@ -8,7 +9,7 @@ const subTaskSchema = new Schema({
     required: true,
     default: "pending",
   },
-  created_at: { type: Date, default: Date.now() },
+  ...commonSchema,
 });
 
 module.exports = model("Subtask", subTaskSchema);
