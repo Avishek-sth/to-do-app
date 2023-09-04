@@ -1,10 +1,7 @@
-const mongoose = require("mongoose");
+const { Schema, model} = require("mongoose");
 
 
-const todoSchema = new mongoose.Schema({});
+const todoSchema = new Schema({});
 
 
-const model = mongoose.model("Todo", todoSchema);
-
-
-module.exports = model;
+module.exports = mongoose.model("Todo", todoSchema);
