@@ -43,6 +43,15 @@ router.put("/:id", async (req, res, next) => {
 });
 
 //updateStatus
+router.patch("/:id", async (req, res, next) => {
+    try {
+        const {id} = req.params;
+        const result = await SubtaskController.updateStatus(id, req.body);
+        res.json({data: result, msg: "success"});
+    } catch(e) {
+        next(e);
+    }
+});
 
 //removeById
 router.delete("/:id", async (req, res, next) => {

@@ -26,7 +26,7 @@ const removeById = async (id) => {
   return await Model.deleteOne({ _id: id });
 };
 
-module.exports = { create, list, getById, updateById, removeById };
+module.exports = { create, list, getById, updateById, removeById, updateStatus };
 
 //CRUD
 /*
