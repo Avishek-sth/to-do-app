@@ -12,4 +12,4 @@ const todoSchema = new Schema({
   ...commonSchema,
 });
 
-module.exports = mongoose.model("Todo", todoSchema);
+module.exports = model("Todo", todoSchema);
