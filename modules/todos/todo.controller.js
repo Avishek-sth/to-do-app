@@ -1,3 +1,4 @@
+const subtaskModel = require("../subtasks/subtask.model");
 const TodoModel = require("./todo.model");
 
 
@@ -6,8 +7,30 @@ const create = async (payload) => {
 };
 
 const list = async () => {
-    return await Model.find();
-}
+    // const todos = await TodoModel.find();
+    // const subtasks = await subtaskModel.find();
+    // const combinedTodo = todos.map(todo => subtasks.find(subtask => subtask.todo === todo._id));
+    // return combinedTodo;
+
+    return await TodoModel.aggregate([
+        {
+          '$lookup': {
+            'from': 'subtasks', 
+            'localField': '_id', 
+            'foreignField': 'todo', 
+            'as': 'subtasks'
+          }
+        }, {
+          '$project': {
+            'title': 1, 
+            'status': 1, 
+            'subtasks': 1
+          }
+        }
+      ]);
+
+
+};
 
 const getById = async (id) => {
     return await Model.findOne({_id: id});
