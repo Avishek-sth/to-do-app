@@ -1,4 +1,6 @@
 const { Schema, model } = require("mongoose");
+const { ObjectId } = Schema.Types;
+
 const commonSchema = require("../common/commonSchema");
 
 const subTaskSchema = new Schema({
@@ -9,6 +11,7 @@ const subTaskSchema = new Schema({
     required: true,
     default: "pending",
   },
+  todo: { type: ObjectId, ref: "Todo" },
   ...commonSchema,
 });
 
