@@ -3,7 +3,9 @@ const TodoController = require("./todo.controller");
 
 router.post("/", async (req, res, next) => {
   try {
-    const result = await TodoController.create(req.body);
+    const {title} = req.body;
+    if(!title) throw new Error("Title is missing!");
+    const result = await TodoController.create({title});
     res.json({ data: result, msg: "success" });
   } catch (e) {
     next(e);
